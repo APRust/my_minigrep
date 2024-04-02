@@ -4,8 +4,7 @@ use std::{env, process};
 use my_minigrep::{run, Config};
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let args: Vec<String> = env::args().collect();
-    let config = Config::build(&args).unwrap_or_else(|e| {
+    let config = Config::build(env::args()).unwrap_or_else(|e| {
         eprintln!("Problem with parsing arguments! {}", e);
         process::exit(1);
     });
